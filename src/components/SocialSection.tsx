@@ -15,32 +15,27 @@ interface GroupCardProps {
   icon: React.ReactNode;
   title: string;
   link: string;
-  color: string;
   delay: number;
 }
 
-const GroupCard = ({ icon, title, link, color, delay }: GroupCardProps) => {
+const GroupCard = ({ icon, title, link, delay }: GroupCardProps) => {
   return (
     <motion.a
       href={link}
       target="_blank"
       rel="noopener noreferrer"
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
       viewport={{ once: true }}
-      transition={{ delay, duration: 0.4 }}
-      className={`group relative rounded-lg p-6 cursor-pointer border border-white/10 hover:border-white/30 transition-all duration-300 ${color}`}
+      transition={{ delay, duration: 0.5, ease: "easeOut" }}
+      className="group flex flex-col items-center text-center gap-4 p-8 border border-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer"
     >
-      <div className="flex flex-col items-center text-center gap-3">
-        <div className="text-white/80 group-hover:text-white transition-colors">
-          {icon}
-        </div>
-        <h3 className="retro-title text-xl md:text-2xl font-bold text-white">
-          {title}
-        </h3>
+      <div className="text-white/70 group-hover:text-white transition-colors duration-300">
+        {icon}
       </div>
+      <h3 className="text-lg md:text-xl font-light text-white/90 tracking-wide">
+        {title}
+      </h3>
     </motion.a>
   );
 };
@@ -53,43 +48,41 @@ export default function SocialSection() {
 
   const socialLinks = [
     {
-      icon: <Instagram className="w-8 h-8 text-white" />,
+      icon: <Instagram className="w-6 h-6" />,
       name: 'Instagram',
       url: 'https://www.instagram.com/desordenados_electromovilidad/',
-      color: 'from-purple-600 to-pink-600'
     },
   ];
 
   return (
     <section ref={ref} className="min-h-screen flex items-center justify-center relative overflow-hidden px-4 py-20">
-      <div className="relative z-10 max-w-4xl mx-auto w-full">
+      <div className="relative z-10 max-w-3xl mx-auto w-full">
         {/* Title */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12"
+          className="text-center mb-20"
         >
-          <h2 className="retro-title text-4xl md:text-6xl font-bold text-white mb-8">
+          <h2 className="text-3xl md:text-4xl font-light text-white/90 tracking-wide mb-4">
             Nuestros grupos
           </h2>
+          <div className="w-16 h-px bg-white/20 mx-auto mt-6"></div>
         </motion.div>
 
         {/* Group Cards */}
-        <div className="grid md:grid-cols-2 gap-6 mb-16">
+        <div className="grid md:grid-cols-2 gap-8 mb-24">
           <GroupCard
-            icon={<WhatsAppIcon className="w-8 h-8" />}
+            icon={<WhatsAppIcon className="w-6 h-6" />}
             title="WhatsApp"
             link="https://chat.whatsapp.com/CfvMKWTZFtI0Ixws6ZuJH5"
-            color="bg-white/5 hover:bg-white/10"
             delay={0.1}
           />
           <GroupCard
-            icon={<Send className="w-8 h-8" />}
+            icon={<Send className="w-6 h-6" />}
             title="Telegram"
             link="https://t.me/desordenadoselectromovilidad"
-            color="bg-white/5 hover:bg-white/10"
             delay={0.2}
           />
         </div>
@@ -102,7 +95,7 @@ export default function SocialSection() {
           transition={{ delay: 0.3, duration: 0.5 }}
           className="text-center"
         >
-          <h3 className="retro-title text-xl md:text-2xl font-bold text-white mb-6">
+          <h3 className="text-lg md:text-xl font-light text-white/70 mb-8 tracking-wide">
             Instagram
           </h3>
           <div className="flex justify-center">
@@ -114,11 +107,10 @@ export default function SocialSection() {
                 rel="noopener noreferrer"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.05 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.4 + (index * 0.1), duration: 0.3 }}
-                className="p-4 rounded-lg border border-white/10 hover:border-white/30 transition-all duration-300"
+                className="p-4 border border-white/10 hover:border-white/20 transition-all duration-300 text-white/70 hover:text-white"
                 aria-label={social.name}
               >
                 {social.icon}
