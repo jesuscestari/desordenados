@@ -15,8 +15,16 @@ import '../styles/global.css';
 		<title>Desordenados - Electromovilidad Buenos Aires</title>
 		<meta name="description" content="Desordenados - Grupo de electromovilidad en Buenos Aires">
 	</head>
-	<body class="bg-gradient-to-b from-black via-slate-900 to-slate-950 min-h-screen overflow-x-hidden">
-		<slot />
+	<body class="bg-gradient-to-b from-black via-slate-900 to-slate-950 min-h-screen overflow-x-hidden relative">
+		<!-- Global background glow orbs (same as hero) -->
+		<div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+			<div class="glow-orb glow-orb-1"></div>
+			<div class="glow-orb glow-orb-2"></div>
+			<div class="glow-orb glow-orb-3"></div>
+		</div>
+		<div class="relative z-10">
+			<slot />
+		</div>
 		<script is:inline>
 			// Prevent right-click context menu on images
 			document.addEventListener('contextmenu', function(e) {
@@ -63,5 +71,93 @@ import '../styles/global.css';
 
 	body {
 		font-family: 'Inter', sans-serif;
+	}
+
+	/* Global animated glowing orbs background */
+	.glow-orb {
+		position: fixed;
+		border-radius: 50%;
+		filter: blur(80px);
+		opacity: 0.15;
+	}
+
+	.glow-orb-1 {
+		width: 400px;
+		height: 400px;
+		background: linear-gradient(135deg, #5dd9e8, #00d4ff);
+		top: 10%;
+		left: -10%;
+		animation: float1 20s ease-in-out infinite;
+		animation-delay: 0s;
+	}
+
+	.glow-orb-2 {
+		width: 500px;
+		height: 500px;
+		background: linear-gradient(135deg, #ff6b35, #ff4757);
+		bottom: 10%;
+		right: -10%;
+		animation: float2 20s ease-in-out infinite;
+		animation-delay: 5s;
+	}
+
+	.glow-orb-3 {
+		width: 350px;
+		height: 350px;
+		background: linear-gradient(135deg, #ffd93d, #ff6348);
+		top: 50%;
+		left: 50%;
+		animation: float3 20s ease-in-out infinite;
+		animation-delay: 10s;
+	}
+
+	@keyframes float1 {
+		0%, 100% {
+			transform: translate(0, 0) scale(1);
+		}
+		33% {
+			transform: translate(30px, -30px) scale(1.1);
+		}
+		66% {
+			transform: translate(-30px, 30px) scale(0.9);
+		}
+	}
+
+	@keyframes float2 {
+		0%, 100% {
+			transform: translate(0, 0) scale(1);
+		}
+		33% {
+			transform: translate(-30px, 30px) scale(1.1);
+		}
+		66% {
+			transform: translate(30px, -30px) scale(0.9);
+		}
+	}
+
+	@keyframes float3 {
+		0%, 100% {
+			transform: translate(-50%, -50%) scale(1);
+		}
+		33% {
+			transform: translate(calc(-50% + 30px), calc(-50% - 30px)) scale(1.1);
+		}
+		66% {
+			transform: translate(calc(-50% - 30px), calc(-50% + 30px)) scale(0.9);
+		}
+	}
+
+	/* Responsive adjustments for glow orbs */
+	@media (max-width: 768px) {
+		.glow-orb {
+			filter: blur(60px);
+		}
+
+		.glow-orb-1,
+		.glow-orb-2,
+		.glow-orb-3 {
+			width: 250px;
+			height: 250px;
+		}
 	}
 </style>

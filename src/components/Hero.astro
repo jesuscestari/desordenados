@@ -5,13 +5,6 @@ import Frame from '../assets/Frame.png';
 
 <section class="hero min-h-screen flex items-center justify-center relative overflow-hidden px-4 py-12">
 
-	<!-- Animated background effects -->
-	<div class="absolute inset-0 overflow-hidden pointer-events-none">
-		<div class="glow-orb glow-orb-1"></div>
-		<div class="glow-orb glow-orb-2"></div>
-		<div class="glow-orb glow-orb-3"></div>
-	</div>
-
 	<!-- Content container -->
 	<div class="content-wrapper relative z-10 flex flex-col items-center justify-center gap-8 md:gap-12 max-w-5xl mx-auto">
 		<!-- Logo Title with animation -->
@@ -19,7 +12,7 @@ import Frame from '../assets/Frame.png';
 			<img
 				src={Titulo.src}
 				alt="Desordenados Electro-Movilidad"
-				class="w-full max-w-2xl md:max-w-3xl lg:max-w-4xl h-auto drop-shadow-2xl hover:scale-105 transition-transform duration-500 ease-out no-drag"
+				class="hero-image w-full max-w-2xl md:max-w-3xl lg:max-w-4xl h-auto drop-shadow-2xl hover:scale-105 transition-transform duration-500 ease-out no-drag"
 				draggable="false"
 				oncontextmenu="return false;"
 			/>
@@ -31,7 +24,7 @@ import Frame from '../assets/Frame.png';
 			<img
 				src={Frame.src}
 				alt="Desordenados Helmet"
-				class="relative w-full max-w-md md:max-w-lg lg:max-w-xl h-auto drop-shadow-[0_0_50px_rgba(255,165,0,0.3)] hover:drop-shadow-[0_0_80px_rgba(255,165,0,0.6)] transition-all duration-700 hover:scale-110 no-drag"
+				class="hero-image floating-frame relative w-full max-w-md md:max-w-lg lg:max-w-xl h-auto drop-shadow-[0_0_50px_rgba(255,165,0,0.3)] hover:drop-shadow-[0_0_80px_rgba(255,165,0,0.6)] transition-all duration-700 hover:scale-110 no-drag"
 				draggable="false"
 				oncontextmenu="return false;"
 			/>
@@ -49,55 +42,6 @@ import Frame from '../assets/Frame.png';
 <style>
 	.hero {
 		position: relative;
-	}
-
-	/* Animated glowing orbs in background */
-	.glow-orb {
-		position: absolute;
-		border-radius: 50%;
-		filter: blur(80px);
-		opacity: 0.15;
-		animation: float 20s ease-in-out infinite;
-	}
-
-	.glow-orb-1 {
-		width: 400px;
-		height: 400px;
-		background: linear-gradient(135deg, #5dd9e8, #00d4ff);
-		top: 10%;
-		left: -10%;
-		animation-delay: 0s;
-	}
-
-	.glow-orb-2 {
-		width: 500px;
-		height: 500px;
-		background: linear-gradient(135deg, #ff6b35, #ff4757);
-		bottom: 10%;
-		right: -10%;
-		animation-delay: 5s;
-	}
-
-	.glow-orb-3 {
-		width: 350px;
-		height: 350px;
-		background: linear-gradient(135deg, #ffd93d, #ff6348);
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		animation-delay: 10s;
-	}
-
-	@keyframes float {
-		0%, 100% {
-			transform: translate(0, 0) scale(1);
-		}
-		33% {
-			transform: translate(30px, -30px) scale(1.1);
-		}
-		66% {
-			transform: translate(-30px, 30px) scale(0.9);
-		}
 	}
 
 	/* Fade in animations */
@@ -148,20 +92,6 @@ import Frame from '../assets/Frame.png';
 		}
 	}
 
-	/* Responsive adjustments */
-	@media (max-width: 768px) {
-		.glow-orb {
-			filter: blur(60px);
-		}
-
-		.glow-orb-1,
-		.glow-orb-2,
-		.glow-orb-3 {
-			width: 250px;
-			height: 250px;
-		}
-	}
-
 	/* Prevent image dragging and selection */
 	.no-drag {
 		user-select: none;
@@ -173,5 +103,30 @@ import Frame from '../assets/Frame.png';
 		-moz-user-drag: none;
 		-o-user-drag: none;
 		pointer-events: auto;
+	}
+
+	/* Increase color saturation for hero images */
+	.hero-image {
+		filter: saturate(1.4);
+	}
+
+	/* Floating animation for Frame image */
+	.floating-frame {
+		animation: floatFrame 6s ease-in-out infinite;
+	}
+
+	@keyframes floatFrame {
+		0%, 100% {
+			transform: translateY(0px) rotate(0deg);
+		}
+		25% {
+			transform: translateY(-20px) rotate(1deg);
+		}
+		50% {
+			transform: translateY(-10px) rotate(0deg);
+		}
+		75% {
+			transform: translateY(-25px) rotate(-1deg);
+		}
 	}
 </style>
