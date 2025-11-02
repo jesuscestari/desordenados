@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import {
-  Send,
-  Instagram
+  Send
 } from 'lucide-react';
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
@@ -11,14 +10,14 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-interface GroupCardProps {
+interface SocialLinkProps {
   icon: React.ReactNode;
   title: string;
   link: string;
   delay: number;
 }
 
-const GroupCard = ({ icon, title, link, delay }: GroupCardProps) => {
+const SocialLinkCard = ({ icon, title, link, delay }: SocialLinkProps) => {
   return (
     <motion.a
       href={link}
@@ -28,13 +27,12 @@ const GroupCard = ({ icon, title, link, delay }: GroupCardProps) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay, duration: 0.6, ease: "easeOut" }}
-      className="group flex flex-col items-center text-center gap-5 p-10 border border-white/10 hover:border-white/20 transition-all duration-500 cursor-pointer relative"
+      className="group flex flex-col items-center text-center gap-4 p-8 border border-white/10 hover:border-white/30 transition-all duration-500 cursor-pointer relative bg-white/0 hover:bg-white/[0.03]"
     >
-      <div className="absolute inset-0 bg-white/0 group-hover:bg-white/[0.02] transition-colors duration-500" />
-      <div className="relative z-10 text-white/70 group-hover:text-white transition-colors duration-500">
+      <div className="text-white/70 group-hover:text-white transition-colors duration-500">
         {icon}
       </div>
-      <h3 className="relative z-10 text-lg md:text-xl font-light text-white/90 group-hover:text-white tracking-wide transition-colors duration-500">
+      <h3 className="text-base md:text-lg font-light text-white/90 group-hover:text-white tracking-wide transition-colors duration-500">
         {title}
       </h3>
     </motion.a>
@@ -47,48 +45,35 @@ export default function SocialSection() {
     threshold: 0.1,
   });
 
-  const socialLinks = [
-    {
-      icon: <Instagram className="w-6 h-6" />,
-      name: 'Instagram',
-      url: 'https://www.instagram.com/desordenados_electromovilidad/',
-    },
-  ];
-
   return (
-    <section id="social" ref={ref} className="flex items-center justify-center relative overflow-hidden px-4 pt-8 pb-24">
-      <div className="relative z-10 max-w-4xl mx-auto w-full">
-        {/* Title */}
+    <section id="social" ref={ref} className="flex items-center justify-center relative overflow-hidden px-4 pt-8 pb-16 md:pb-24">
+      <div className="relative z-10 max-w-6xl mx-auto w-full">
+        {/* Social Links */}
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="text-center mb-16"
+          transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+          className="text-center"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-white/90 tracking-wide mb-6">
-            Nuestros grupos
-          </h2>
-          <div className="w-20 h-px bg-white/20 mx-auto"></div>
+          <p className="text-white/60 text-sm md:text-base mb-6 tracking-wide">
+            Únete a nuestras comunidades
+          </p>
+          <div className="grid grid-cols-2 gap-4 md:gap-6 max-w-md mx-auto">
+            <SocialLinkCard
+              icon={<WhatsAppIcon className="w-6 h-6" />}
+              title="WhatsApp"
+              link="https://chat.whatsapp.com/CfvMKWTZFtI0Ixws6ZuJH5"
+              delay={0.2}
+            />
+            <SocialLinkCard
+              icon={<Send className="w-6 h-6" />}
+              title="Telegram"
+              link="https://t.me/desordenadoselectromovilidad"
+              delay={0.3}
+            />
+          </div>
         </motion.div>
-
-        {/* Group Cards */}
-        <div className="grid md:grid-cols-2 gap-6 md:gap-8 mb-32">
-          <GroupCard
-            icon={<WhatsAppIcon className="w-7 h-7" />}
-            title="WhatsApp"
-            link="https://chat.whatsapp.com/CfvMKWTZFtI0Ixws6ZuJH5"
-            delay={0.1}
-          />
-          <GroupCard
-            icon={<Send className="w-7 h-7" />}
-            title="Telegram"
-            link="https://t.me/desordenadoselectromovilidad"
-            delay={0.2}
-          />
-        </div>
-
-      
       </div>
     </section>
   );
