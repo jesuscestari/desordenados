@@ -10,12 +10,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-	background: linear-gradient(180deg, #5dd9e8, #ff6b35);
+	background: rgba(255, 255, 255, 0.2);
 	border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	background: linear-gradient(180deg, #00d4ff, #ff4757);
+	background: rgba(255, 255, 255, 0.3);
 }
 
 /* Smooth scrolling */

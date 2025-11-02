@@ -81,14 +81,14 @@ export default function SocialSection() {
           <GroupCard
             icon={<WhatsAppIcon className="w-8 h-8" />}
             title="WhatsApp"
-            link="https://chat.whatsapp.com/tu-link-aqui"
+            link="https://chat.whatsapp.com/CfvMKWTZFtI0Ixws6ZuJH5"
             color="bg-white/5 hover:bg-white/10"
             delay={0.1}
           />
           <GroupCard
             icon={<Send className="w-8 h-8" />}
             title="Telegram"
-            link="https://t.me/tu-canal-aqui"
+            link="https://t.me/desordenadoselectromovilidad"
             color="bg-white/5 hover:bg-white/10"
             delay={0.2}
           />

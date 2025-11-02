@@ -7,6 +7,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://desordenados.com.ar', // Cambia esta URL por la URL final de tu sitio
   integrations: [react()],
 
   vite: {
