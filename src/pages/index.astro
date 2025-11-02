@@ -2,11 +2,19 @@
 import Hero from '../components/Hero.astro';
 import Gallery from '../components/Gallery.astro';
 import SocialSection from '../components/SocialSection';
+import Navigation from '../components/Navigation';
+import InstagramFeed from '../components/InstagramFeed';
+import FAQ from '../components/FAQ';
+import Footer from '../components/Footer';
 import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
+	<Navigation client:load />
 	<Hero />
 	<Gallery />
+	<InstagramFeed client:visible />
+	<FAQ client:visible />
 	<SocialSection client:visible />
+	<Footer client:visible />
 </Layout>

@@ -20,7 +20,7 @@ export default function Gallery({ images }: GalleryProps) {
 	}
 
 	return (
-		<section ref={ref} className="gallery-section min-h-screen flex items-center justify-center relative overflow-hidden px-4 py-24">
+		<section id="gallery" ref={ref} className="gallery-section min-h-screen flex items-center justify-center relative overflow-hidden px-4 py-24">
 			<div className="max-w-4xl mx-auto w-full relative z-10">
 				<motion.h2
 					initial={{ opacity: 0, y: 20 }}

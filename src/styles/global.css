@@ -21,6 +21,7 @@
 /* Smooth scrolling */
 html {
 	scroll-behavior: smooth;
+	scroll-padding-top: 80px; /* Offset para navegación fija */
 }
 
 /* Remove default margins and ensure full height */

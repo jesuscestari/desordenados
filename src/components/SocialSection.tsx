@@ -56,7 +56,7 @@ export default function SocialSection() {
   ];
 
   return (
-    <section ref={ref} className="min-h-screen flex items-center justify-center relative overflow-hidden px-4 py-24">
+    <section id="social" ref={ref} className="flex items-center justify-center relative overflow-hidden px-4 pt-8 pb-24">
       <div className="relative z-10 max-w-4xl mx-auto w-full">
         {/* Title */}
         <motion.div
@@ -64,7 +64,7 @@ export default function SocialSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="text-center mb-24"
+          className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-white/90 tracking-wide mb-6">
             Nuestros grupos
@@ -88,40 +88,7 @@ export default function SocialSection() {
           />
         </div>
 
-        {/* Social Media */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4, duration: 0.6, ease: "easeOut" }}
-          className="text-center"
-        >
-          <h3 className="text-xl md:text-2xl font-light text-white/80 mb-10 tracking-wide">
-            Instagram
-          </h3>
-          <div className="flex justify-center">
-            {socialLinks.map((social, index) => (
-              <motion.a
-                key={social.name}
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                whileHover={{ scale: 1.08 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5 + (index * 0.1), duration: 0.4, ease: "easeOut" }}
-                className="p-5 border border-white/10 hover:border-white/25 transition-all duration-500 text-white/70 hover:text-white relative group"
-                aria-label={social.name}
-              >
-                <div className="absolute inset-0 bg-white/0 group-hover:bg-white/[0.02] transition-colors duration-500" />
-                <div className="relative z-10">
-                  {social.icon}
-                </div>
-              </motion.a>
-            ))}
-          </div>
-        </motion.div>
+      
       </div>
     </section>
   );
