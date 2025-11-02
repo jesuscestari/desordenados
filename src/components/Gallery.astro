@@ -3,7 +3,19 @@ import GalleryComponent from './Gallery';
 import grupo1 from '../assets/grupo/grupo1.webp';
 import grupo2 from '../assets/grupo/grupo2.webp';
 
-const images = [grupo1, grupo2];
+// Función helper para extraer la URL de la imagen de forma segura
+function getImageSrc(img: any): string {
+	if (typeof img === 'string') return img;
+	if (img?.src) return String(img.src);
+	if (img?.default?.src) return String(img.default.src);
+	return String(img);
+}
+
+// Extraer solo las URLs como strings para asegurar compatibilidad en producción
+const images = [
+	{ src: getImageSrc(grupo1) },
+	{ src: getImageSrc(grupo2) }
+];
 ---
 
-<GalleryComponent images={images} client:visible />
+<GalleryComponent images={images} client:load />

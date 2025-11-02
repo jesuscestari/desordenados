@@ -79,3 +79,46 @@ img {
 img.no-drag {
 	pointer-events: auto;
 }
+
+/* Gallery image container - iOS compatibility */
+.gallery-image-container {
+	position: relative;
+	width: 100%;
+	max-width: 28rem;
+	aspect-ratio: 3/4;
+	/* Fallback para iOS Safari antiguo usando padding-bottom */
+	/* Para ratio 3:4 vertical: altura/ancho = 4/3 = 1.3333 = 133.33% */
+	padding-bottom: 133.33%;
+}
+
+/* Soporte moderno para aspect-ratio */
+@supports (aspect-ratio: 3/4) {
+	.gallery-image-container {
+		padding-bottom: 0;
+		aspect-ratio: 3/4;
+	}
+}
+
+/* Asegurar que la imagen llene el contenedor en iOS */
+.gallery-image-container img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center bottom;
+}
+
+/* Tipografía retro-futurista */
+.retro-title {
+	font-family: 'Orbitron', sans-serif;
+	font-weight: 900;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: #ffffff;
+	text-shadow: 
+		0 0 10px rgba(93, 217, 232, 0.6),
+		0 0 20px rgba(93, 217, 232, 0.4),
+		2px 2px 4px rgba(0, 0, 0, 0.9);
+}

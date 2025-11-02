@@ -4,9 +4,12 @@ interface GalleryProps {
 
 export default function Gallery({ images }: GalleryProps) {
 	// Solo mostrar la primera imagen
-	const firstImage = images[0];
+	const firstImage = images?.[0];
 
-	if (!firstImage) return null;
+	if (!firstImage || !firstImage.src) {
+		console.warn('Gallery: No image available', { images, firstImage });
+		return null;
+	}
 
 	return (
 		<section className="gallery-section min-h-screen flex items-center justify-center relative overflow-hidden px-4 py-12">
@@ -17,20 +20,19 @@ export default function Gallery({ images }: GalleryProps) {
 			</div>
 
 			<div className="max-w-6xl mx-auto w-full relative z-10">
-				<h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-orange-400 to-pink-500">
-					Únete a nuestra comunidad de más de 50 riders
+				<h2 className="retro-title text-4xl md:text-5xl font-bold text-center mb-12 text-white">
+					Somos una comunidad de más de 50 riders
 				</h2>
 
 				<div className="flex justify-center">
-					<div className="relative aspect-[9/16] rounded-xl overflow-hidden shadow-2xl group mx-auto max-w-md">
+					<div className="relative rounded-xl overflow-hidden shadow-2xl group mx-auto max-w-md gallery-image-container">
 						<div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
 						<img
 							src={firstImage.src}
 							alt="Grupo Desordenados"
-							className="w-full h-full object-cover object-bottom transition-transform duration-500 group-hover:scale-105 no-drag"
+							className="no-drag transition-transform duration-500 group-hover:scale-105"
 							draggable={false}
 							onContextMenu={(e) => e.preventDefault()}
-							loading="lazy"
 						/>
 					</div>
 				</div>
