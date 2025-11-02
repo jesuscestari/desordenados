@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir \"C:\\Users\\Admin\\Desktop\\desordenados\\src\\assets\" /B)",
+      "Bash(pnpm add:*)",
+      "Bash(dir:*)",
+      "Bash(nul)",
+      "Bash(pnpm dev)",
+      "Bash(git checkout:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

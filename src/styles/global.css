@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+::-webkit-scrollbar-track {
+	background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+	background: linear-gradient(180deg, #5dd9e8, #ff6b35);
+	border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: linear-gradient(180deg, #00d4ff, #ff4757);
+}
+
+/* Smooth scrolling */
+html {
+	scroll-behavior: smooth;
+}
+
+/* Remove default margins and ensure full height */
+* {
+	box-sizing: border-box;
+}
+
+/* Selection color matching brand */
+::selection {
+	background-color: #5dd9e8;
+	color: #0f172a;
+}
+
+::-moz-selection {
+	background-color: #5dd9e8;
+	color: #0f172a;
+}
+
+/* Embla Carousel Styles */
+.embla {
+	position: relative;
+}
+
+.embla__viewport {
+	overflow: hidden;
+	border-radius: 1rem;
+}
+
+.embla__container {
+	display: flex;
+	touch-action: pan-y;
+	margin-left: 0;
+	will-change: transform;
+}
+
+.embla__slide {
+	position: relative;
+	min-width: 100%;
+	padding-left: 0;
+	flex-shrink: 0;
+}
+
+/* Prevent image dragging, selection, and saving */
+img {
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-webkit-user-drag: none;
+	-khtml-user-drag: none;
+	-moz-user-drag: none;
+	-o-user-drag: none;
+}
+
+/* Additional protection for images */
+img.no-drag {
+	pointer-events: auto;
+}
