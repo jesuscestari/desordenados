@@ -27,13 +27,14 @@ const GroupCard = ({ icon, title, link, delay }: GroupCardProps) => {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ delay, duration: 0.5, ease: "easeOut" }}
-      className="group flex flex-col items-center text-center gap-4 p-8 border border-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer"
+      transition={{ delay, duration: 0.6, ease: "easeOut" }}
+      className="group flex flex-col items-center text-center gap-5 p-10 border border-white/10 hover:border-white/20 transition-all duration-500 cursor-pointer relative"
     >
-      <div className="text-white/70 group-hover:text-white transition-colors duration-300">
+      <div className="absolute inset-0 bg-white/0 group-hover:bg-white/[0.02] transition-colors duration-500" />
+      <div className="relative z-10 text-white/70 group-hover:text-white transition-colors duration-500">
         {icon}
       </div>
-      <h3 className="text-lg md:text-xl font-light text-white/90 tracking-wide">
+      <h3 className="relative z-10 text-lg md:text-xl font-light text-white/90 group-hover:text-white tracking-wide transition-colors duration-500">
         {title}
       </h3>
     </motion.a>
@@ -55,32 +56,32 @@ export default function SocialSection() {
   ];
 
   return (
-    <section ref={ref} className="min-h-screen flex items-center justify-center relative overflow-hidden px-4 py-20">
-      <div className="relative z-10 max-w-3xl mx-auto w-full">
+    <section ref={ref} className="min-h-screen flex items-center justify-center relative overflow-hidden px-4 py-24">
+      <div className="relative z-10 max-w-4xl mx-auto w-full">
         {/* Title */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-20"
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-center mb-24"
         >
-          <h2 className="text-3xl md:text-4xl font-light text-white/90 tracking-wide mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-white/90 tracking-wide mb-6">
             Nuestros grupos
           </h2>
-          <div className="w-16 h-px bg-white/20 mx-auto mt-6"></div>
+          <div className="w-20 h-px bg-white/20 mx-auto"></div>
         </motion.div>
 
         {/* Group Cards */}
-        <div className="grid md:grid-cols-2 gap-8 mb-24">
+        <div className="grid md:grid-cols-2 gap-6 md:gap-8 mb-32">
           <GroupCard
-            icon={<WhatsAppIcon className="w-6 h-6" />}
+            icon={<WhatsAppIcon className="w-7 h-7" />}
             title="WhatsApp"
             link="https://chat.whatsapp.com/CfvMKWTZFtI0Ixws6ZuJH5"
             delay={0.1}
           />
           <GroupCard
-            icon={<Send className="w-6 h-6" />}
+            icon={<Send className="w-7 h-7" />}
             title="Telegram"
             link="https://t.me/desordenadoselectromovilidad"
             delay={0.2}
@@ -89,13 +90,13 @@ export default function SocialSection() {
 
         {/* Social Media */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.3, duration: 0.5 }}
+          transition={{ delay: 0.4, duration: 0.6, ease: "easeOut" }}
           className="text-center"
         >
-          <h3 className="text-lg md:text-xl font-light text-white/70 mb-8 tracking-wide">
+          <h3 className="text-xl md:text-2xl font-light text-white/80 mb-10 tracking-wide">
             Instagram
           </h3>
           <div className="flex justify-center">
@@ -105,15 +106,18 @@ export default function SocialSection() {
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                whileHover={{ scale: 1.05 }}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                whileHover={{ scale: 1.08 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.4 + (index * 0.1), duration: 0.3 }}
-                className="p-4 border border-white/10 hover:border-white/20 transition-all duration-300 text-white/70 hover:text-white"
+                transition={{ delay: 0.5 + (index * 0.1), duration: 0.4, ease: "easeOut" }}
+                className="p-5 border border-white/10 hover:border-white/25 transition-all duration-500 text-white/70 hover:text-white relative group"
                 aria-label={social.name}
               >
-                {social.icon}
+                <div className="absolute inset-0 bg-white/0 group-hover:bg-white/[0.02] transition-colors duration-500" />
+                <div className="relative z-10">
+                  {social.icon}
+                </div>
               </motion.a>
             ))}
           </div>
