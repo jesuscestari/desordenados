@@ -44,6 +44,7 @@ export default function Navigation() {
   const navItems = [
     { id: 'hero', label: 'Inicio' },
     { id: 'gallery', label: 'Comunidad' },
+    { id: 'events', label: 'Eventos' },
     { id: 'instagram', label: 'Instagram' },
     { id: 'faq', label: 'FAQ' },
     { id: 'social', label: 'Grupos' },

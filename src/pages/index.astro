@@ -7,12 +7,14 @@ import InstagramFeed from '../components/InstagramFeed';
 import FAQ from '../components/FAQ';
 import Footer from '../components/Footer';
 import Layout from '../layouts/Layout.astro';
+import EventsSection from '../components/EventsSection';
 ---
 
 <Layout>
 	<Navigation client:load />
 	<Hero />
 	<Gallery />
+	<EventsSection client:visible />
 	<InstagramFeed client:visible />
 	<FAQ client:visible />
 	<SocialSection client:visible />

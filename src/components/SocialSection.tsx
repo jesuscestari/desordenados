@@ -48,17 +48,28 @@ export default function SocialSection() {
   return (
     <section id="social" ref={ref} className="flex items-center justify-center relative overflow-hidden px-4 pt-8 pb-16 md:pb-24">
       <div className="relative z-10 max-w-6xl mx-auto w-full">
+        {/* Title */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-center mb-12 md:mb-16"
+        >
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-white/90 tracking-wide mb-4">
+            Nuestras Comunidades
+          </h2>
+          <div className="w-20 h-px bg-white/20 mx-auto"></div>
+        </motion.div>
+
         {/* Social Links */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           className="text-center"
         >
-          <p className="text-white/60 text-sm md:text-base mb-6 tracking-wide">
-            Únete a nuestras comunidades
-          </p>
           <div className="grid grid-cols-2 gap-4 md:gap-6 max-w-md mx-auto">
             <SocialLinkCard
               icon={<WhatsAppIcon className="w-6 h-6" />}
