@@ -1,8 +1,11 @@
 ---
 import '../styles/global.css';
 
-const siteUrl = Astro.site;
+// Obtener la URL del sitio de forma segura
+// Prioridad: Astro.site > URL_ORIGIN env > Astro.url.origin
+const siteUrl = Astro.site || import.meta.env.PUBLIC_SITE_URL || (typeof Astro.url !== 'undefined' ? Astro.url.origin : 'https://desordenados.com.ar');
 const pageUrl = new URL(Astro.url.pathname, siteUrl).href;
+// Asegurar que la imagen tenga una URL absoluta
 const imageUrl = new URL('/web-app-manifest-512x512.png', siteUrl).href;
 const title = 'Desordenados - Electromovilidad Buenos Aires';
 const description = 'Desordenados - Grupo de electromovilidad en Buenos Aires';
@@ -30,15 +33,19 @@ const description = 'Desordenados - Grupo de electromovilidad en Buenos Aires';
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:image" content={imageUrl} />
+		<meta property="og:image:secure_url" content={imageUrl} />
+		<meta property="og:image:type" content="image/png" />
 		<meta property="og:image:width" content="512" />
 		<meta property="og:image:height" content="512" />
+		<meta property="og:site_name" content="Desordenados" />
+		<meta property="og:locale" content="es_AR" />
 		
 		<!-- Twitter -->
-		<meta property="twitter:card" content="summary_large_image" />
-		<meta property="twitter:url" content={pageUrl} />
-		<meta property="twitter:title" content={title} />
-		<meta property="twitter:description" content={description} />
-		<meta property="twitter:image" content={imageUrl} />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:url" content={pageUrl} />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={imageUrl} />
 	</head>
 	<body class="bg-gradient-to-b from-black via-slate-900 to-slate-950 min-h-screen overflow-x-hidden relative">
 		<!-- Global background glow orbs (same as hero) -->
