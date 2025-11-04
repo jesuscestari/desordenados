@@ -35,7 +35,7 @@ export default function Footer() {
             rel="noopener noreferrer"
             className="text-white/60 hover:text-white/80 transition-colors"
           >
-            jesuscestari
+            JC
           </a>
         </motion.p>
       </div>
