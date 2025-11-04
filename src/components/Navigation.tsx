@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronUp } from 'lucide-react';
+import { ChevronUp, Instagram } from 'lucide-react';
 import headerImage from '../assets/header.png';
 
 export default function Navigation() {
@@ -99,8 +99,24 @@ export default function Navigation() {
               ))}
             </div>
 
-            {/* Mobile Menu Button */}
-            <MobileMenu navItems={navItems} scrollToSection={scrollToSection} />
+            {/* Right side: Instagram Icon + Mobile Menu Button */}
+            <div className="flex items-center gap-4">
+              {/* Instagram Icon - Only visible on desktop */}
+              <motion.a
+                href="https://www.instagram.com/desordenados_electromovilidad/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden md:block text-white/70 hover:text-white transition-colors duration-300 cursor-pointer"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                aria-label="Síguenos en Instagram"
+              >
+                <Instagram className="w-6 h-6" />
+              </motion.a>
+
+              {/* Mobile Menu Button */}
+              <MobileMenu navItems={navItems} scrollToSection={scrollToSection} />
+            </div>
           </div>
         </div>
       </motion.nav>
@@ -173,6 +189,17 @@ function MobileMenu({ navItems, scrollToSection }: { navItems: Array<{ id: strin
                   {item.label}
                 </button>
               ))}
+              
+              {/* Instagram Icon at the end of mobile menu */}
+              <a
+                href="https://www.instagram.com/desordenados_electromovilidad/"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setIsOpen(false)}
+                className="flex items-center py-2 text-white/70 hover:text-white transition-colors duration-300"
+              >
+                <Instagram className="w-5 h-5" />
+              </a>
             </div>
           </motion.div>
         )}
