@@ -123,3 +123,15 @@ img.no-drag {
 		0 0 20px rgba(93, 217, 232, 0.4),
 		2px 2px 4px rgba(0, 0, 0, 0.9);
 }
+
+/* Header image enhancement - clarity and saturation */
+.header-image {
+	filter: saturate(1.15);
+	image-rendering: -webkit-optimize-contrast;
+	image-rendering: crisp-edges;
+	transition: filter 0.3s ease;
+}
+
+.header-image:hover {
+	filter: saturate(1.4);
+}

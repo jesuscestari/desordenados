@@ -76,7 +76,7 @@ export default function Navigation() {
               <img
                 src={headerImage.src}
                 alt="Desordenados"
-                className="h-8 md:h-10 w-auto object-contain no-drag"
+                className="h-8 md:h-10 w-auto object-contain no-drag header-image"
                 draggable={false}
                 onContextMenu={(e) => e.preventDefault()}
               />
