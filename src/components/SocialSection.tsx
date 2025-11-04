@@ -3,6 +3,7 @@ import { useInView } from 'react-intersection-observer';
 import {
   Send
 } from 'lucide-react';
+import { QRCodeSVG } from 'qrcode.react';
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -15,26 +16,60 @@ interface SocialLinkProps {
   title: string;
   link: string;
   delay: number;
+  gradient: string;
 }
 
-const SocialLinkCard = ({ icon, title, link, delay }: SocialLinkProps) => {
+const SocialLinkCard = ({ title, link, delay }: Omit<SocialLinkProps, 'icon' | 'gradient'>) => {
   return (
     <motion.a
       href={link}
       target="_blank"
       rel="noopener noreferrer"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 30, scale: 0.95 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true }}
       transition={{ delay, duration: 0.6, ease: "easeOut" }}
-      className="group flex flex-col items-center text-center gap-4 p-8 border border-white/10 hover:border-white/30 transition-all duration-500 cursor-pointer relative bg-white/0 hover:bg-white/[0.03]"
+      className="relative flex flex-col items-center gap-3 md:gap-6 p-3 md:p-8 border border-white/10 cursor-pointer bg-white/[0.02] rounded-xl flex-1 min-w-0"
     >
-      <div className="text-white/70 group-hover:text-white transition-colors duration-500">
-        {icon}
-      </div>
-      <h3 className="text-base md:text-lg font-light text-white/90 group-hover:text-white tracking-wide transition-colors duration-500">
+      {/* Title */}
+      <h3 className="relative z-10 text-sm md:text-2xl font-light text-white/90 tracking-wide text-center">
         {title}
       </h3>
+      
+      {/* QR Code */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: delay + 0.3, duration: 0.5, ease: "easeOut" }}
+        className="relative z-10 flex flex-col items-center gap-2"
+      >
+        <div className="p-2 md:p-3 bg-white rounded-lg shadow-lg">
+          <div className="md:hidden">
+            <QRCodeSVG
+              value={link}
+              size={80}
+              level="H"
+              includeMargin={false}
+              fgColor="#000000"
+              bgColor="#ffffff"
+            />
+          </div>
+          <div className="hidden md:block">
+            <QRCodeSVG
+              value={link}
+              size={140}
+              level="H"
+              includeMargin={false}
+              fgColor="#000000"
+              bgColor="#ffffff"
+            />
+          </div>
+        </div>
+        <p className="text-[10px] md:text-xs text-white/50 font-light tracking-wide">
+          Escanea para unirte
+        </p>
+      </motion.div>
     </motion.a>
   );
 };
@@ -70,15 +105,13 @@ export default function SocialSection() {
           transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           className="text-center"
         >
-          <div className="grid grid-cols-2 gap-4 md:gap-6 max-w-md mx-auto">
+          <div className="flex flex-row items-center justify-center gap-2 md:gap-8 max-w-4xl mx-auto w-full px-2">
             <SocialLinkCard
-              icon={<WhatsAppIcon className="w-6 h-6" />}
               title="WhatsApp"
               link="https://chat.whatsapp.com/CfvMKWTZFtI0Ixws6ZuJH5"
               delay={0.2}
             />
             <SocialLinkCard
-              icon={<Send className="w-6 h-6" />}
               title="Telegram"
               link="https://t.me/desordenadoselectromovilidad"
               delay={0.3}
