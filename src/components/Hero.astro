@@ -7,12 +7,13 @@ import Frame from '../assets/Frame.png';
 
 	<!-- Content container -->
 	<div class="content-wrapper relative z-10 flex flex-col items-center justify-center gap-8 md:gap-12 max-w-5xl mx-auto">
-		<!-- Logo Title with animation -->
-		<div class="title-container animate-fade-in-down">
+		<!-- Logo Title with animation and glow effect -->
+		<div class="title-container animate-fade-in-down relative group">
+			<div class="absolute inset-8 bg-gradient-to-r from-cyan-400 via-blue-500 to-cyan-500 opacity-0 group-hover:opacity-50 blur-2xl transition-opacity duration-700"></div>
 			<img
 				src={Titulo.src}
 				alt="Desordenados Electro-Movilidad"
-				class="hero-image w-full max-w-2xl md:max-w-3xl lg:max-w-4xl h-auto drop-shadow-2xl hover:scale-105 transition-transform duration-500 ease-out no-drag"
+				class="hero-image title-image relative w-full max-w-[320px] md:max-w-3xl lg:max-w-4xl h-auto drop-shadow-[0_0_50px_rgba(93,217,232,0.3)] hover:drop-shadow-[0_0_80px_rgba(93,217,232,0.6)] hover:scale-105 transition-all duration-700 no-drag"
 				draggable="false"
 				oncontextmenu="return false;"
 			/>
@@ -20,11 +21,11 @@ import Frame from '../assets/Frame.png';
 
 		<!-- Helmet Frame with glow effect -->
 		<div class="frame-container animate-fade-in-up relative group">
-			<div class="absolute inset-0 bg-gradient-to-r from-orange-500 via-yellow-400 to-red-500 opacity-0 group-hover:opacity-50 blur-3xl transition-opacity duration-700"></div>
+			<div class="absolute inset-8 bg-gradient-to-r from-orange-500 via-yellow-400 to-red-500 opacity-0 group-hover:opacity-50 blur-2xl transition-opacity duration-700"></div>
 			<img
 				src={Frame.src}
 				alt="Desordenados Helmet"
-				class="hero-image floating-frame relative w-full max-w-md md:max-w-lg lg:max-w-xl h-auto drop-shadow-[0_0_50px_rgba(255,165,0,0.3)] hover:drop-shadow-[0_0_80px_rgba(255,165,0,0.6)] transition-all duration-700 hover:scale-110 no-drag"
+				class="hero-image floating-frame relative w-full max-w-[200px] md:max-w-sm lg:max-w-md h-auto drop-shadow-[0_0_50px_rgba(255,165,0,0.3)] hover:drop-shadow-[0_0_80px_rgba(255,165,0,0.6)] transition-all duration-700 hover:scale-110 no-drag"
 				draggable="false"
 				oncontextmenu="return false;"
 			/>
@@ -105,9 +106,20 @@ import Frame from '../assets/Frame.png';
 		pointer-events: auto;
 	}
 
-	/* Increase color saturation for hero images */
+	/* Increase color saturation and clarity for hero images */
 	.hero-image {
-		filter: saturate(1.4);
+		filter: saturate(1.5) brightness(1.1) contrast(1.15);
+	}
+
+	/* Enhanced quality for title image */
+	.title-image {
+		image-rendering: -webkit-optimize-contrast;
+		image-rendering: crisp-edges;
+		image-rendering: auto;
+		will-change: transform;
+		backface-visibility: hidden;
+		transform: translateZ(0);
+		filter: saturate(1.5) brightness(1.1) contrast(1.2) drop-shadow(0 0 1px rgba(0, 0, 0, 0.3));
 	}
 
 	/* Floating animation for Frame image */
