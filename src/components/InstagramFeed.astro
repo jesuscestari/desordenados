@@ -1,0 +1,26 @@
+---
+import InstagramFeedComponent from './InstagramFeed';
+import instagram1 from '../assets/instagram/1.webp';
+import instagram2 from '../assets/instagram/2.webp';
+import instagram3 from '../assets/instagram/3.webp';
+import instagram4 from '../assets/instagram/4.webp';
+
+// Función helper para extraer la URL de la imagen de forma segura
+function getImageSrc(img: any): string {
+	if (typeof img === 'string') return img;
+	if (img?.src) return String(img.src);
+	if (img?.default?.src) return String(img.default.src);
+	return String(img);
+}
+
+// Extraer solo las URLs como strings para asegurar compatibilidad en producción
+const images = [
+	{ src: getImageSrc(instagram1) },
+	{ src: getImageSrc(instagram2) },
+	{ src: getImageSrc(instagram3) },
+	{ src: getImageSrc(instagram4) }
+];
+---
+
+<InstagramFeedComponent images={images} client:visible />
+

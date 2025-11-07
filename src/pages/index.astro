@@ -3,7 +3,7 @@ import Hero from '../components/Hero.astro';
 import Gallery from '../components/Gallery.astro';
 import SocialSection from '../components/SocialSection';
 import Navigation from '../components/Navigation';
-import InstagramFeed from '../components/InstagramFeed';
+import InstagramFeed from '../components/InstagramFeed.astro';
 import FAQ from '../components/FAQ';
 import Footer from '../components/Footer';
 import Layout from '../layouts/Layout.astro';
@@ -15,7 +15,7 @@ import EventsSection from '../components/EventsSection';
 	<Hero />
 	<Gallery />
 	<EventsSection client:visible />
-	<InstagramFeed client:visible />
+	<InstagramFeed />
 	<FAQ client:visible />
 	<SocialSection client:visible />
 	<Footer client:visible />
